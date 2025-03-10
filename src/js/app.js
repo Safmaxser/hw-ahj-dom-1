@@ -1,7 +1,9 @@
-import PlayingField from './PlayingField';
+import PlayingField from "./PlayingField";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const playingField = new PlayingField(document.querySelector('.playing-field'));
+document.addEventListener("DOMContentLoaded", () => {
+  const playingField = new PlayingField(
+    document.querySelector(".playing-field"),
+  );
   playingField.createCharacter();
   setInterval(() => {
     playingField.placeCharacter();
