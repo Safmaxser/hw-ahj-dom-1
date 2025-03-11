@@ -1,9 +1,7 @@
 import PlayingField from "./PlayingField";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const playingField = new PlayingField(
-    document.querySelector(".playing-field"),
-  );
+  const playingField = new PlayingField();
   playingField.createCharacter();
   setInterval(() => {
     playingField.placeCharacter();

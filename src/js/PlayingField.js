@@ -1,9 +1,27 @@
 export default class PlayingField {
-  constructor(element) {
-    this.element = element;
+  constructor() {
+    this.playingField;
     this.character = undefined;
     this.rowCharacter = undefined;
     this.colCharacter = undefined;
+    this.createPlayingField();
+  }
+
+  createPlayingField() {
+    const playingField = document.createElement("div");
+    playingField.classList.add("playing-field");
+    for (let i = 0; i < 4; i++) {
+      const row = document.createElement("div");
+      row.classList.add("row");
+      for (let i = 0; i < 4; i++) {
+        const col = document.createElement("div");
+        col.classList.add("col");
+        row.appendChild(col);
+      }
+      playingField.appendChild(row);
+    }
+    document.documentElement.children[1].appendChild(playingField);
+    this.playingField = playingField;
   }
 
   static getRandomInRage(min, max) {
@@ -33,10 +51,8 @@ export default class PlayingField {
     );
     this.rowCharacter = positionRow;
     this.colCharacter = positionCol;
-    console.log(`positionRow = ${positionRow}   positionCol = ${positionCol}`);
-    const rowList = this.element.querySelectorAll(".row");
-    const colList = rowList[positionRow].querySelectorAll(".col");
-    const cellParent = colList[positionCol];
+    const cellParent =
+      this.playingField.children[positionRow].children[positionCol];
     cellParent.appendChild(this.character);
   }
 }
